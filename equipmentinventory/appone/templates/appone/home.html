@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+<!-- inheritance everything from main.html -->
+{% block content %}
+<div>
+  <h1>Home Page</h1>
+</div>
+<div>
+  {% for item in item %}
+  <div>
+    <h5>
+      {{item.id}}
+      <a href="{% url 'equipmentpage' item.id%}">
+        Device Name: {{item.name}} Device Type: {{item.devicetype}} Quantity:
+        {{item.quantity}} Audit: {{item.audit_date}} Location: {{item.location}}
+        Satus: {{item.status}} Comments:{{item.comments}}
+        <!-- pul out everything what we need from database -->
+      </a>
+    </h5>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock content %}
