@@ -14,7 +14,17 @@
 }
 
 .button{
-    padding-top: 20px;
+    margin-top: 50px;
     background-color: aqua;
     border-radius: 10px;
+    text-align: center;
+    width: fit-content;
+    padding: 15px;
+}
+
+.button:hover{
+    background-color: #93c52f;
+    transition-duration: 1s;
+    transition-property: all;
+    transition-timing-function: ease-in-out;
 }
