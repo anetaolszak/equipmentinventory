@@ -3,19 +3,40 @@
 {% block content %}
 <head>
   <link rel="stylesheet" href="static/appone/home.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="frontpage">
+      <div class="frontpagecontent">
       <div class="text">
         <h1>Equipment Inventory</h1>
-        <p>Book Different Types of Equipment</p>
+        <p>Book Different Types of Equipment</p>       
         <div class="button">
-          <p>Check it out</p>
-          <a href=""></a>
+          <a href="">Sign Up</a>
         </div>
       </div>
+      <img id="inventory" src="static/appone/inventory.png" alt="inventory" />
     </div>
+  </div>
   <div>
+  <main>
+    <div class="about">
+      <img src="static/appone/inventory2.png" alt="inventory" />
+      <p>Inventory for all sorts <br> From camera to vr headsets <br> To furniture we have it all
+        in one place. <br> Any Student may book different equipment <br>  And return on the due date.
+      </p>
+    </div>
+    <div class="booknow">
+      <p>BOOK NOW</p>
+      <p>High Quality Equipment</p>
+      <p>Why Not Give A Try</p>
+      <div class="button1">
+        <a href="">Book Now</a>
+      </div>
+    </div>
+  </main>
     {% for item in item %}
     <div>
       <h5>
