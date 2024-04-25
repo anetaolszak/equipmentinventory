@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+<!-- inheritance everything from main.html -->
+{% block content %}
+
+<div>
+  <from method="POST" action="{% url 'appone_deleteitem' item.id %}">
+    {% csrf_token %}
+    <p>Delete {{item.name}}</p>
+    <input type="submit" value="Confirm" />
+  </from>
+  <div>
+    <small>
+      <a href="{% url 'homepage' %}"> Cancel</a>
+    </small>
+  </div>
+</div>
+
+{% endblock content %}
