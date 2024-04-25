@@ -5,6 +5,7 @@ urlpatterns = [
     path('', views.home, name = "homepage"),
     path('admindashboard/', views.admindashboard),
     path('equipment/<str:id>', views.equipment, name = "equipmentpage"),
-    path('navbar/', views.navbar),
+    path('createitem/', views.createItem, name = "appone_createitem"),
+
 
 ]

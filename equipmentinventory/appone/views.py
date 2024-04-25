@@ -1,18 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Equipment
+from .forms import CreateItemForm
 
 # Create your views here.
-'''testdata = [
-    {'id':1, 'name': 'Item 1 of list'},
-    {'id':2, 'name': 'Item 2 of list'},
-    {'id':3, 'name': 'Item 3 of list'},
-    {'id':4, 'name': 'Item 4 of list'},
-    {'id':5, 'name': 'Item 5 of list'},
-    {'id':6, 'name': 'Item 6 of list'},
-    
 
-    ]'''
 
 
 def home(request):
@@ -24,9 +16,16 @@ def admindashboard(request):
     return render(request, 'appone/admindashboard.html')
 
 def equipment(request, id):
-    listitem = Equipment.objects.get(id=id)
+    listitem = Equipment.objects.get(id=id) # 'READE' pull out all information out of our databasde on the homepage
     context = {'listitem': listitem}
     return render(request, 'appone/equipment.html', context)
 
-def navbar(request):
-    return render(request, 'navbar.html')
+def createItem(request):
+    if request.method == "POST":
+        form = CreateItemForm(request.POST)
+        if form.is_valid():                 # validate data
+                form = form.save()          # save to database
+                return redirect("homepage")
+    else:
+            form = CreateItemForm()
+    return render(request, 'appone/createitem.html', {"form": form})
