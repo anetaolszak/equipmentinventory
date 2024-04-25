@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'appone.apps.ApponeConfig',
+    'accounts', #created app maryam
 
 ]
 
