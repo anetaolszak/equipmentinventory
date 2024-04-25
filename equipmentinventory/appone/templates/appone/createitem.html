@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+<!-- inheritance everything from main.html -->
+{% block content %} {% load static %}
+
+<head>
+  <!-- Other head elements -->
+  <link href="{% static 'appone/styles.css' %}" rel="stylesheet" />
+  <div class="container">
+</head>
+<h1>Create Equipment Inventory</h1>
+
+<div>
+  <form method="post">
+    {% csrf_token %} {{form.as_p}}
+    <button type="submit">Submit</button>
+  </form>
+</div>
+</div>
+
+{% endblock content %}
