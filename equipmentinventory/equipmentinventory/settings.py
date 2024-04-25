@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'appone.apps.ApponeConfig',
     'accounts', #created app maryam
+    'historicalbookings' #app created by rayan
 
 ]
 
