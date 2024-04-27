@@ -1,0 +1,60 @@
+/* Base container styling */
+.container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+/* Styles for the card */
+.card {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+.card-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 0;
+    font-size: 24px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+/* Form styling */
+form.needs-validation {
+    margin: 0 auto;
+    width: 90%;
+}
+
+/* Button styling */
+.btn-block {
+    padding: 10px;
+    font-size: 18px;
+}
+
+/* Ensures the button width matches the form */
+button[type="submit"] {
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Improve form input styling */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Hover effect for button */
+button:hover {
+    opacity: 0.8;
+}
