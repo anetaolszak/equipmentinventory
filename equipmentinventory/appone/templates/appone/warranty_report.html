@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Warranty Report</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+      }
+      .container {
+        max-width: 1000px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid #ddd;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 8px;
+      }
+      th {
+        background-color: #0056b3;
+        color: white;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      .title {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">Warranty Report</h1>
+      <table>
+        <tr>
+          <th>Equipment Name</th>
+          <th>Warranty Details</th>
+          <th>Expiration Date</th>
+        </tr>
+        {% for equipment in inventory %}
+        <tr>
+          <td>{{ equipment.name }}</td>
+          <td>{{ equipment.devicewarranty.warranty_details }}</td>
+          <td>{{ equipment.devicewarranty.expiration_date }}</td>
+          <!-- Adjust as per your model -->
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="3">No warranty information available.</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </body>
+</html>

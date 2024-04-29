@@ -1,0 +1,30 @@
+{% load static %}
+<!-- inherits css from reports.css -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Inventory Report</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'appone/reports.css' %}"
+    />
+  </head>
+  <body>
+    <h1>Current Inventory Status</h1>
+    <table border="1">
+      <tr>
+        <th>Equipment Name</th>
+        <th>Status</th>
+      </tr>
+      {% for item in inventory %}
+      <tr>
+        <td>{{ item.name }}</td>
+        <td>{{ item.status.status }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
