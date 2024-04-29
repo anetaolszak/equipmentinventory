@@ -2,35 +2,6 @@
 <html lang="en">
   <head>
 
-    <style>
-      .search-bar {
-        display: flex;
-        align-items: center;
-        margin-top: 5px;
-      }
-      
-      .search-form {
-        display: flex;
-        flex-grow: 1;
-      }
-      
-      .form-control {
-        flex-grow: 1;
-        margin-right: 5px;
-        margin-left: 5px;
-      }
-      
-      .btn {
-        background-color: #004aad;
-        height: auto;
-        padding: 5px 10px;
-        margin-right: 5px;
-        border: none;
-        color:white;
-      }
-    </style>
-
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Equipment Inventory</title>
@@ -38,14 +9,6 @@
   <body>
     {% include 'navbar.html'%}
     <!-- inheritance navbar to all pages -->
-
-    <div class="search-bar">
-      <form action="" class="search-form">
-        <input type="text" name="searchEquipment" class="form-control" placeholder="Search Equipment">
-        <button type="submit" class="btn btn-primary">Search</button>
-      </form>
-    </div>
-<br/>
 
     {% block content %} {% endblock content %}
   </body>
