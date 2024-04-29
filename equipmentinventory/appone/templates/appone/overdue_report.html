@@ -1,0 +1,30 @@
+{% load static %}
+<!-- inherits css from reports.css -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Overdue Equipment Report</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'appone/reports.css' %}"
+    />
+  </head>
+  <body>
+    <h1>Overdue Equipment Report</h1>
+    <table border="1">
+      <tr>
+        <th>Equipment Name</th>
+        <th>Due Date</th>
+      </tr>
+      {% for item in overdue_equipment %}
+      <tr>
+        <td>{{ item.name }}</td>
+        <td>{{ item.due_date }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

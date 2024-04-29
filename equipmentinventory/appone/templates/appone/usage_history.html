@@ -1,0 +1,38 @@
+{% load static %}
+<!-- inherits css from reports.css -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Equipment Usage History<</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'appone/reports.css' %}"
+    />
+  </head>
+  <body>
+    <h1>Equipment Usage History</h1>
+    <table border="1">
+      <tr>
+        <th>Equipment Name</th>
+        <th>User</th>
+        <th>Date Used</th>
+        <th>Description</th>
+      </tr>
+      {% for record in usage_history %}
+      <tr>
+        <td>{{ record.equipment.name }}</td>
+        <td>{{ record.user.username }}</td>
+        <td>{{ record.date_used }}</td>
+        <td>{{ record.notes }}</td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="4">No usage history available.</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
