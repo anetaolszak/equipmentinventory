@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+
+
 from .models import Equipment, DeviceWarranty, UsageHistory
 from .forms import CreateItemForm, ItemForm
 from django.utils import timezone
