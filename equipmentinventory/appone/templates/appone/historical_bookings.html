@@ -1,0 +1,8 @@
+{% extends 'main.html' %}
+{% block content %}
+<h1>Historical Bookings</h1>
+{% for booking in historical_bookings %}
+    <p>{{ booking.equipment }} - {{ booking.start_date }} to {{ booking.end_date }}</p>
+    <a href="{% url 'rebook_booking' booking.id %}">Re-book</a>
+{% endfor %}
+{% endblock %}
