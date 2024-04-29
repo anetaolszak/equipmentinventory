@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.db.models import Q #rayan
+from django.contrib.auth import get_user #rayan
+from .models import Booking #rayan
 from .models import Equipment
 from .forms import CreateItemForm, ItemForm
+from .forms import ReservationForm #rayan - import reservation form
 from django.shortcuts import get_object_or_404
 
 # Create your views here.
@@ -55,3 +59,31 @@ def deleteItem(request, id):
         item.delete()
         return redirect("homepage")
     return render(request, 'appone/delete.html', {"item" : item})
+
+def reserve_item(request): #rayan
+    if request.method == 'POST':
+        form = ReservationForm(request.POST)
+        if form.is_valid():
+            booking = form.save(commit=False)
+            user = get_user(request)
+            booking.user = user
+            booking.save()
+            return redirect('booking_success')
+    else:
+        form = ReservationForm()
+    return render(request, 'appone/reservation_form.html', {'form':form})
+
+def booking_success(request): #rayan
+    return render(request, 'appone/booking_success.html')
+    
+
+def current_bookings(request): #rayan
+    current_bookings = Booking.objects.filter(user=request.user, is_current=True)
+    return render(request, 'appone/current_bookings.html', {'current_bookings': current_bookings})
+
+def historical_bookings(request): #rayan
+    historical_bookings = Booking.objects.filter(Q(user=request.user) & Q(is_current=False))
+    return render(request, 'appone/historical_bookings.html', {'historical_bookings': historical_bookings})
+
+def rebook_booking(request, booking_id): #rayan
+    booking = get_object_or_404(Booking, id=booking_id)
