@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventory Count by Device Type</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+      }
+      .container {
+        max-width: 1000px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid #ddd;
+      }
+      th {
+        background-color: #004a99;
+        color: white;
+        padding: 10px;
+        text-align: left;
+      }
+      td {
+        padding: 10px;
+        text-align: left;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Inventory Count by Device Type:</h1>
+      <table>
+        <tr>
+          <th>Device Type</th>
+          <th>Count</th>
+        </tr>
+        {% for device in count_by_device_type %}
+        <tr>
+          <td>{{ device.devicetype__type }}</td>
+          <td>{{ device.count }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="2">No devices found.</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </body>
+</html>
