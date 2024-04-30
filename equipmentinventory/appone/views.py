@@ -115,7 +115,7 @@ def overdue_equipment_count_view(request):
         'overdue_count': overdue_count,
     }
 
-    return render(request, 'appone/overdue_equipment.html', context)
+    return render(request, 'appone/overdue_count.html', context)
 
 
 @login_required
