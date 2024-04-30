@@ -1,46 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="/static/appone/admindashboard.css"/>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>New Admin Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <title>Admin Dashboard</title>
   </head>
   <body>
     {% include 'navbar.html' %}
     <!-- navbar transfered on admindashboard -->
-    <div class="container">
-      <h1>Admin Dashboard</h1>
-      <div class="row">
-        <div class="col-md-4">
-          <!-- Example Widget for Equipment Summary -->
-          <div class="card">
-            <div class="card-body">
-              <div class="card-body" style="text-align: center;">
-              <h3 class="card-title">Welcome Admin</h3>
-              <!-- Content showing summary of equipment -->
-            </div>
-            </div>
-            <nav style="background-color: white; padding: 10px;">
-              <a href="http://127.0.0.1:8000/reports/inventorystatus/" style="text-decoration: none; color: black; padding: 10px 10px; border: 10px;">Current Inventory Status</a>
-              <a href="http://127.0.0.1:8000/reports/usage/" style="text-decoration: none; color: black; padding: 10px 10px; border: 5px;">Equipment Usage History</a>
-              <a href="http://127.0.0.1:8000/reports/warranty/" style="text-decoration: none; color: black; padding: 10px 10px; border: 5px;">Warranty Report</a>
-              <a href="http://127.0.0.1:8000/reports/overdue/" style="text-decoration: none; color: black; padding: 10px 10px; border: 10px;">Overdue Equipment Report</a>
-              <a href="http://127.0.0.1:8000/createitem" style="text-decoration: none; color: black; padding: 10px 10px; border: 5px;">Create Item</a>
-              <a href="http://127.0.0.1:8000/updateitem/1" style="text-decoration: none; color: black; padding: 10px 10px; border: 5px;">Update Item</a>
-              <a href="http://127.0.0.1:8000/deleteitem/1" style="text-decoration: none; color: black; padding: 10px 10px; border: 5px;">Delete Item<int:id></a>
-              <a href="http://127.0.0.1:8000/inventory/overduecount/" style="text-decoration: none; color: black; padding: 10px 10px; border: 5px;">Inventory Overdue Count</a>
-              <a href="http://127.0.0.1:8000/inventory/countbydevicetype/" style="text-decoration: none; color: black; padding: 10px 10px; border: 5px;">Inventory Device Type</a>
-              <a href="http://127.0.0.1:8000/admin/" style="text-decoration: none; color: black; padding: 10px 10px; border: 5px;">Admin</a>
-            </nav>
-          </div>
-            </div>
-          </div>
+    <div class="adminmain">
+      <div class="leftsection">
+        <div class="navleft">
+          <nav class="mainnavs">
+            <a href="http://127.0.0.1:8000/admin/">Admin</a>
+            <a href="http://127.0.0.1:8000/createitem" >Create Item</a>
+            <a href="http://127.0.0.1:8000/updateitem/1">Update Item</a>
+            <a href="http://127.0.0.1:8000/deleteitem/1">Delete Item<int:id></a>
+            <a href="http://127.0.0.1:8000/reports/inventorystatus/">Current Inventory Status</a>
+            <a href="http://127.0.0.1:8000/reports/usage/" >Equipment Usage History</a>
+            <a href="http://127.0.0.1:8000/reports/warranty/">Warranty Report</a>
+            <a href="http://127.0.0.1:8000/reports/overdue/">Overdue Equipment Report</a>
+            <a href="http://127.0.0.1:8000/inventory/overduecount/">Inventory Overdue Count</a>
+            <a href="http://127.0.0.1:8000/inventory/countbydevicetype/">Inventory Device Type</a>
+          </nav>
         </div>
-        <div class="col-md-4">
-          <!-- Other Widgets -->
-        </div>
-        <!-- ... more widgets -->
       </div>
+      <div class="card-body">
+        <div class="topcard">
+          <p>Dashboard</p>
+          <p>Admin</p>
+        </div>
+        <div class="cardmain">
+          <p>Welcome Admin</p>
+          <div class="cardmain2">
+            <div class="cardmainleft">
+              <div class="Reservationwaiting">
+                <div class="reservations">
+                  <p>Reservation Waiting Approval</p>
+                </div>
+                <div class="students">
+                  <p>Students Awaiting Approval</p>
+                </div>
+              </div>
+              <div class="reservation">
+                <p>Reservations Requests</p>
+              </div>
+              <div class="Accounts">
+                <p>Account Requests</p>
+              </div>           
+            </div>
+            <div class="cardmainright">
+            </div>
+          </div>
+        </div>
     </div>
   </body>
 </html>

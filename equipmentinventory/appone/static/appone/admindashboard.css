@@ -1,0 +1,98 @@
+
+  /*Styling for admin dashboard*/
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+.adminmain{
+    display: flex;
+    justify-content: space-between;
+    height: 700px;
+}
+
+.leftsection {
+  background-color: rgb(23, 26, 26);
+}
+
+
+.mainnavs{
+    width: fit-content;
+    font-size: 15px;
+    text-align: center;
+
+}
+
+.mainnavs a{
+    border-radius: 10px;
+    border-color: white;
+    text-decoration: none;
+    padding: 15px 30px 15px 30px;
+    display: block;
+    margin-top: 10px;
+    color: white;
+    transition-duration: 1s;
+    transition-property: all;
+    transition-timing-function: ease-in-out;
+}
+
+.mainnavs a:hover{
+    background-color: #2f3ec5;
+    color: white;
+}
+
+.mainnavs a:active{
+    background-color: #2f3ec5;
+    color: white;
+}
+
+.card-body{
+    flex: 2;
+}
+
+.topcard{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 15px 0px 15px 0px;
+    border-bottom: rgb(161, 161, 161) solid 1px;
+}
+
+.cardmain{
+    margin: 40px;
+    background-color: rgb(211, 211, 212);
+}
+
+.cardmain p{
+    padding: 10px;
+}
+
+.cardmain2{
+    height: fit-content;
+    background-color: rgb(189, 189, 189);
+    padding: 20px;
+}
+
+.Reservationwaiting{
+    display: flex;
+    justify-content: space-between;
+}
+
+.reservations{
+    padding: 90px 50px 90px 50px;
+    background-color: aqua;
+}
+
+.students {
+    padding: 90px 50px 90px 50px;
+}

@@ -7,7 +7,7 @@ body {
     padding: 0;
   }
   
-  .container {
+.container {
     width: 80%;
     max-width: 600px;
     margin: 40px auto; /* Increase top and bottom margin */
@@ -20,7 +20,7 @@ body {
   input[type="text"],
   input[type="number"],
   select,
-  textarea {
+textarea {
     width: calc(100% - 20px); /* Subtract padding from width */
     padding: 10px;
     margin-bottom: 20px;
@@ -28,7 +28,7 @@ body {
     border-radius: 4px;
   }
   
-  button {
+button {
     width: calc(100% - 20px); /* Subtract padding from width */
     padding: 10px;
     margin-bottom: 20px;
@@ -39,13 +39,16 @@ body {
     cursor: pointer;
   }
   
-  button:hover {
+button:hover {
     background-color: #004494;
   }
   
-  h1 {
+h1 {
     text-align: center;
     color: #333;
     margin-top: 0; /* Remove default margin from h1 */
   }
   
+
+
+
