@@ -1,12 +1,11 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-
-
 from .models import Equipment, DeviceWarranty, UsageHistory
 from .forms import CreateItemForm, ItemForm
 from django.utils import timezone
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.db.models import Count
 
 
 # Create your views here.
@@ -21,7 +20,14 @@ def home(request):
     return render(request, 'appone/home.html', context)
 
 def admindashboard(request):
-    return render(request, 'appone/admindashboard.html')
+        # Get necessary data from the database
+    equipment_count = Equipment.objects.count()
+
+    context = {
+        'equipment_count': equipment_count,
+    }
+    return render(request, 'appone/admindashboard.html', context)
+
 
 def equipment(request, id):
     listitem = Equipment.objects.get(id=id) # 'READE' pull out all information out of our databasde on the homepage
@@ -95,3 +101,32 @@ def deleteItem(request, id):
         item.delete()
         return redirect("homepage")
     return render(request, 'appone/delete.html', {"item" : item})
+
+@login_required
+@user_passes_test(is_admin)
+def overdue_equipment_count_view(request):
+    # Queryset of overdue equipment
+    overdue_equipment = Equipment.objects.filter(due_date__lt=timezone.now().date())
+    overdue_count = overdue_equipment.count()  # Count of overdue equipment
+
+    # Pass the queryset and count to the context
+    context = {
+        'overdue_equipment': overdue_equipment,
+        'overdue_count': overdue_count,
+    }
+
+    return render(request, 'appone/overdue_equipment.html', context)
+
+
+@login_required
+@user_passes_test(is_admin)
+def inventory_count_by_device_type_view(request):
+    # Count of equipment by device type
+    count_by_device_type = Equipment.objects.values('devicetype__type').annotate(count=Count('id')).order_by('devicetype__type')
+    
+    # Pass the counts to the context
+    context = {
+        'count_by_device_type': count_by_device_type,
+    }
+
+    return render(request, 'appone/count_by_device_type.html', context)
