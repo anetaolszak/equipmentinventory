@@ -3,7 +3,8 @@ from django.http import HttpResponse
 from .models import Equipment
 from .forms import CreateItemForm, ItemForm
 from django.shortcuts import get_object_or_404
-
+from django.contrib.auth.forms import UserCreationForm #maryam
+from django.contrib import messages #maryam
 # Create your views here.
 
 
@@ -55,3 +56,21 @@ def deleteItem(request, id):
         item.delete()
         return redirect("homepage")
     return render(request, 'appone/delete.html', {"item" : item})
+
+
+#view created by maryam:
+def register(request):
+     if request.method == 'POST':
+          form = UserCreationForm(request.POST)
+          if form.is_valid():
+               form.save()
+               username = form.cleaned_data.get('username')
+               messages.success(request, f'Account created for {username}!')
+               return redirect('appone_home')
+          else:
+           #    form = UserCreationForm()
+               return render(request, "appone/register.html", {'form': form})
+     else:
+        # This branch handles GET requests by initializing a new, blank form
+        form = UserCreationForm()
+        return render(request, "appone/register.html", {'form': form})
