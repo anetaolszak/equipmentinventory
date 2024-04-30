@@ -1,3 +1,4 @@
+/*Edits all of the home page and any used html files connected to this css file*/
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +13,7 @@
     font-style: normal;
   }
   
-
+/* Edits all of the header adding backgrounds and transitions and buttons*/
 .frontpage {
     background-color: #0b0a0a;
     height: 500px;
@@ -29,6 +30,7 @@
     color: white;
 }
 
+/*Adds a button made to be clickable and add transitons when hovered on*/
 .button{
     display: flex;
     margin-top: 50px;
@@ -65,10 +67,12 @@
     border-radius: 10px;
 }
 
+/*Edits all of the main page background to make the background look more presentable*/
 main{
     background-color: #d9dae0;
 }
 
+/*Edits all of the about us */
 .about {
     display: flex;
     justify-content: space-between;
@@ -89,6 +93,8 @@ main{
     margin-left: 70px;
 }
 
+/*Edits the book now part of the main page adding a button with a hover too and making it 
+change color when hovered on*/
 .booknow{
     background-color: #1d1c57;
     height: 400px;
