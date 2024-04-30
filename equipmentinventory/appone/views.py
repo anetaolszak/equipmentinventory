@@ -5,6 +5,7 @@ from .forms import CreateItemForm, ItemForm
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.forms import UserCreationForm #maryam
 from django.contrib import messages #maryam
+
 # Create your views here.
 
 
@@ -66,7 +67,7 @@ def register(request):
                form.save()
                username = form.cleaned_data.get('username')
                messages.success(request, f'Account created for {username}!')
-               return redirect('appone_home')
+               return redirect('home')
           else:
            #    form = UserCreationForm()
                return render(request, "appone/register.html", {'form': form})
