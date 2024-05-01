@@ -1,0 +1,47 @@
+{% extends 'main.html' %}
+<!-- inheritance everything from main.html -->
+{% block content %} {% load static %}
+
+<head>
+  <!-- Other head elements -->
+  <link href="{% static 'appone/styles.css' %}" rel="stylesheet" />
+  <div class="container">
+</head>
+
+<h1>Update Equipment Details</h1>
+
+<!-- The form action can be empty if the form is to be submitted to the same URL as the current page -->
+<form method="POST" action="">
+  {% csrf_token %}
+  <!-- Include the CSRF token for security -->
+
+  <!-- Display form errors if there are any -->
+  {% if form.errors %}
+  <div class="alert alert-danger" role="alert">
+    Please correct the errors below.
+  </div>
+  {% endif %}
+
+  <!-- Loop through each form field -->
+  {% for field in form %}
+  <div class="form-group">
+    {{ field.label_tag }}
+    <!-- This will output the label for the field -->
+    {{ field }}
+    <!-- This will output the field itself -->
+    <!-- Display field errors if there are any -->
+    {% if field.errors %} {% for error in field.errors %}
+    <div class="alert alert-danger">{{ error }}</div>
+    {% endfor %} {% endif %}
+    <!-- Display field help text if it exists -->
+    {% if field.help_text %}
+    <small class="form-text text-muted">{{ field.help_text }}</small>
+    {% endif %}
+  </div>
+  {% endfor %}
+
+  <!-- Submit button -->
+  <button type="submit" class="btn btn-primary">Save changes</button>
+</form>
+
+{% endblock content %}

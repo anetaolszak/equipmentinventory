@@ -1,0 +1,82 @@
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+      }
+      .container {
+        max-width: 1000px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid #ddd;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 8px;
+      }
+      th {
+        background-color: #0056b3;
+        color: white;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      .title {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .delete-container {
+        text-align: center;
+        padding-top: 50px;
+      }
+      
+      .delete-form {
+        display: inline-block;
+        margin-bottom: 20px;
+      }
+      
+      .delete-prompt {
+        font-weight: bold;
+      }
+      
+      .button {
+        padding: 10px 20px;
+        margin: 5px;
+        text-decoration: none;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      
+      .confirm {
+        background-color: #0056b3; /* Blue background */
+      }
+      
+      .cancel {
+        background-color: #f44336; /* Red background */
+        padding: 10px 20px;
+        border-radius: 5px;
+        color: white;
+        text-decoration: none;
+        display: inline-block;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+      
+      .cancel-container {
+        margin-top: 20px;
+      }
+      

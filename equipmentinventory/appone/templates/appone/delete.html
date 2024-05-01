@@ -1,17 +1,22 @@
-{% extends 'main.html' %}
-<!-- inheritance everything from main.html -->
+{% extends 'main.html' %} {% load static %}
+<!-- Make sure to load the static files -->
+
 {% block content %}
 
-<div>
-  <from method="POST" action="{% url 'appone_deleteitem' item.id %}">
+<div class="delete-container">
+  <form
+    method="POST"
+    action="{% url 'appone_deleteitem' item.id %}"
+    class="delete-form"
+  >
     {% csrf_token %}
-    <p>Delete {{item.name}}</p>
-    <input type="submit" value="Confirm" />
-  </from>
-  <div>
-    <small>
-      <a href="{% url 'homepage' %}"> Cancel</a>
-    </small>
+    <p class="delete-prompt">
+      Are you sure you want to delete "{{ item.name }}"?
+    </p>
+    <input type="submit" value="Confirm" class="button confirm" />
+  </form>
+  <div class="cancel-container">
+    <a href="{% url 'homepage' %}" class="button cancel">Cancel</a>
   </div>
 </div>
 

@@ -1,6 +1,10 @@
 from django import forms
 from .models import Equipment
+<<<<<<< HEAD
 from .models import Booking #rayan - import booking form
+=======
+from .models import DeviceWarranty
+>>>>>>> 3e78b2890d26c5d4679768a63b26f2026219b30d
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -19,6 +23,7 @@ class ItemForm(forms.ModelForm):
         model = Equipment
         fields = '__all__'
 
+<<<<<<< HEAD
 class ReservationForm(forms.ModelForm):
     class Meta:
         model = Booking
@@ -26,3 +31,13 @@ class ReservationForm(forms.ModelForm):
         widgets = {
             'is_current': forms.HiddenInput()
         }
+=======
+class DeviceWarrantyForm(forms.ModelForm):
+    class Meta:
+        model = DeviceWarranty
+        fields = ['warranty_period', 'expiration_date']
+        widgets = {
+            'warranty_period': forms.Select(choices=DeviceWarranty.WARRANTY_CHOICES),
+            'expiration_date': forms.DateInput(attrs={'type': 'date'}),
+        }
+>>>>>>> 3e78b2890d26c5d4679768a63b26f2026219b30d
