@@ -1,8 +1,91 @@
+<!-- rayan -->
 {% extends 'main.html' %}
-{% block content %}
+{% block content %} {% load static %}
 
+<head>
+    <link href="{% static 'appone/styles.css' %}" rel="stylesheet" />
+    <style>
+        .table-container {
+            width: 95%;
+            margin: 0 auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #0f1a94;
+            color: white;
+        }
+        .cancel-btn {
+            background-color: #ff0000;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 9px;
+            display: flex;
+            text-decoration: none;
+            justify-content: center;
+        }
+        .action-btn {
+            background-color: #1E98D7;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 9px;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<br/>
 <h1>Current Bookings</h1>
-{% for booking in current_bookings %}
-    <p>{{ booking.equipment }} - {{ booking.start_date }} to {{ booking.end_date }}</p>
-{% endfor %}
+<div class=table-container>
+<table>
+    <thead>
+        <th>Equipment</th>
+        <th>Type</th>
+        <th>Status</th>
+        <th>Location</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+        {% for booking in current_bookings %}
+        <tr>
+            <td>{{ booking.equipment.name }}</td>
+            <td>{{ booking.equipment.devicetype.type }}</td>
+            <td>{{ booking.equipment.status.status }}</td>
+            <td>{{ booking.equipment.location.location }}</td>
+            <td>{{ booking.start_date }}</td>
+            <td>{{ booking.end_date }}</td>
+            <td>
+                <form action="{% url 'cancel_booking' booking.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="cancel-btn" onclick="return confirm('Are you sure you want to cancel this booking?')">Cancel</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+<div class="btn-container">
+    <a href="{% url 'historical_bookings' %}" class="action-btn">View Historical Bookings</a>
+    <a href="{% url 'reserve_item' %}" class="action-btn">Make a New Booking</a>
+</div>
+
+</div>
 {% endblock %}

@@ -1,0 +1,105 @@
+{% load static %}
+<!-- inherits css from reports.css -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Overdue Equipment</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'appone/reports.css' %}"
+    />
+  </head>
+
+  <h1>Overdue Equipment Count Report</h1>
+  <p>Overdue Equipment Count: {{ overdue_count }}</p>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Device Type</th>
+      <th>Serial Number</th>
+      <th>CPU</th>
+      <th>GPU</th>
+      <th>RAM</th>
+      <th>Quantity</th>
+      <th>Audit Date</th>
+      <th>Location</th>
+      <th>Status</th>
+      <th>User</th>
+      <th>Due Date</th>
+      <th>Comments</th>
+      <th>Last Updated</th>
+      <!--  headers  -->
+    </tr>
+    {% for equipment in overdue_equipment %}
+    <tr>
+      <td>{{ equipment.name }}</td>
+      <td>{{ equipment.devicetype }}</td>
+      <td>{{ equipment.serial_number }}</td>
+      <td>{{ equipment.cpu }}</td>
+      <td>{{ equipment.gpu }}</td>
+      <td>{{ equipment.ram }}</td>
+      <td>{{ equipment.quantity }}</td>
+      <td>{{ equipment.audit_date }}</td>
+      <td>{{ equipment.location }}</td>
+      <td>{{ equipment.status }}</td>
+      <td>{{ equipment.due_date }}</td>
+      <td>{{ equipment.comments }}</td>
+      <td>{{ equipment.updated }}</td>
+      <!--  data  -->
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="14">No overdue equipment found.</td>
+    </tr>
+    {% endfor %}
+  </table>
+</html>
+<<<<<<< HEAD
+=======
+<h1>Overdue Equipment</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Device Type</th>
+    <th>Serial Number</th>
+    <th>CPU</th>
+    <th>GPU</th>
+    <th>RAM</th>
+    <th>Quantity</th>
+    <th>Audit Date</th>
+    <th>Location</th>
+    <th>Status</th>
+    <th>User</th>
+    <th>Due Date</th>
+    <th>Comments</th>
+    <th>Last Updated</th>
+    <!-- Add more headers if needed -->
+  </tr>
+  {% for equipment in overdue_equipment %}
+  <tr>
+    <td>{{ equipment.name }}</td>
+    <td>{{ equipment.devicetype.name }}</td>
+    <td>{{ equipment.serial_number }}</td>
+    <td>{{ equipment.cpu }}</td>
+    <td>{{ equipment.gpu }}</td>
+    <td>{{ equipment.ram }}</td>
+    <td>{{ equipment.quantity }}</td>
+    <td>{{ equipment.audit_date }}</td>
+    <td>{{ equipment.location.name }}</td>
+    <td>{{ equipment.status.name }}</td>
+
+    <td>{{ equipment.due_date }}</td>
+    <td>{{ equipment.comments }}</td>
+    <td>{{ equipment.updated }}</td>
+    <!-- Add more data if needed -->
+  </tr>
+  {% empty %}
+  <tr>
+    <td colspan="14">No overdue equipment found.</td>
+  </tr>
+  {% endfor %}
+</table>
+>>>>>>> 1562e3b460e80484749a065765dddb30216fef66

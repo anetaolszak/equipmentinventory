@@ -1,18 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- rayan -->
+{% extends 'main.html' %}
+{% block content %} {% load static %}
+
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking Success</title>
-    <!-- Add any CSS styling if needed -->
-    <link rel="stylesheet" href="static/appone/home.css" />
+    <link href="{% static 'appone/styles.css' %}" rel="stylesheet" />
 </head>
 <body>
     <div class="container">
         <h1>Booking Successful!</h1>
         <p>Your equipment has been reserved successfully.</p>
-        <!-- You can provide additional information or links here -->
         <a href="{% url 'current_bookings' %}">View Current Bookings</a>
     </div>
 </body>
-</html>
+
+{% endblock content%}
