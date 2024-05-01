@@ -107,7 +107,6 @@ def deleteItem(request, id):
         return redirect("homepage")
     return render(request, 'appone/delete.html', {"item" : item})
 
-<<<<<<< HEAD
 def reserve_item(request): #rayan
     if request.method == 'POST':
         form = ReservationForm(request.POST)
@@ -162,7 +161,6 @@ def cancel_booking(request, booking_id): #rayan
         return redirect('current_bookings')
     else:
         return HttpResponse("You cannot cancel this booking.")   
-=======
 @login_required
 @user_passes_test(is_admin)
 def overdue_equipment_count_view(request):
@@ -191,4 +189,3 @@ def inventory_count_by_device_type_view(request):
     }
 
     return render(request, 'appone/count_by_device_type.html', context)
->>>>>>> 3e78b2890d26c5d4679768a63b26f2026219b30d
