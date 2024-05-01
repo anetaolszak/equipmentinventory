@@ -13,6 +13,7 @@ urlpatterns = [
     path('historical-bookings/', views.historical_bookings, name='historical_bookings'), #rayan
     path('rebook-booking/<int:booking_id>/', views.rebook_booking, name='rebook_booking'), #rayan
     path('booking/success/', views.booking_success, name='booking_success'), #rayan
+    path('cancel-booking/<int:booking_id>/', views.cancel_booking, name='cancel_booking'), #rayan
 
 
 ]

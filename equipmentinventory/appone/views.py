@@ -6,6 +6,8 @@ from .models import Booking #rayan
 from .models import Equipment
 from .forms import CreateItemForm, ItemForm
 from .forms import ReservationForm #rayan - import reservation form
+from django.utils import timezone #rayan
+from django.contrib import messages #rayan
 from django.shortcuts import get_object_or_404
 
 # Create your views here.
@@ -65,10 +67,17 @@ def reserve_item(request): #rayan
         form = ReservationForm(request.POST)
         if form.is_valid():
             booking = form.save(commit=False)
-            user = get_user(request)
-            booking.user = user
-            booking.save()
-            return redirect('booking_success')
+            equipment = booking.equipment
+            if not equipment.is_available():
+                messages.error(request, "This item is currently unavailable.")
+            elif equipment.is_booked(booking.start_date, booking.end_date):
+                messages.error(request, "This item is already booked for the selected dates.")
+            else:    
+                user = get_user(request)
+                booking.user = user
+                booking.start_date = timezone.now()
+                booking.save()
+                return redirect('booking_success')
     else:
         form = ReservationForm()
     return render(request, 'appone/reservation_form.html', {'form':form})
@@ -87,3 +96,23 @@ def historical_bookings(request): #rayan
 
 def rebook_booking(request, booking_id): #rayan
     booking = get_object_or_404(Booking, id=booking_id)
+    new_booking = Booking.objects.create(
+        equipment=booking.equipment,
+        user=request.user,
+        start_date=timezone.now().date(),
+        end_date=booking.end_date,
+        is_current=True
+    )
+
+    booking.is_current = False #rayan
+    booking.save()
+    return redirect('current_bookings')
+
+def cancel_booking(request, booking_id): #rayan
+    booking = get_object_or_404(Booking, id=booking_id)
+    if request.user == booking.user:
+        booking.is_current = False
+        booking.save()
+        return redirect('current_bookings')
+    else:
+        return HttpResponse("You cannot cancel this booking.")   
