@@ -14,8 +14,12 @@ class CreateItemForm(forms.ModelForm):
 
 class ItemForm(forms.ModelForm):
 
-
     class Meta:
         model = Equipment
         fields = '__all__'
 
+class UserRegisterForm(UserCreationForm):
+    email = forms.EmailField(required=True)
+class Meta:
+    model = User
+fields = ['username', 'email', 'password1', 'password2']

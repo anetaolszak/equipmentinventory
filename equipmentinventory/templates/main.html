@@ -77,15 +77,26 @@
 
     </script>
     
+    <!--maryam-->
     <footer class="text-center text-lg-start bg-light text-muted mt-4" style="background-color: #f8f9fa; text-align: center; font-size: 0.8rem; opacity: 0.7; padding: 10px 0; box-shadow: 0 -2px 4px rgba(0,0,0,0.1);">
       <div class="p-4">
         © Copyright -
         <span style="font-weight: bold;">  Team Brave</span> -
-        <span style="font-weight: bold;">Privacy Policy</span> -
-        <span style="font-weight: bold;">Terms Of Use</span>
-
+        <span><a href="{% url 'privacypolicy' %}" style="font-weight: bold; text-decoration: none; color: inherit;">Privacy Policy</a></span> -
+        <span><a href="{% url 'termsofuse' %}" style="font-weight: bold; text-decoration: none; color: inherit;">Terms Of Use</a></span> -
       </div>
     </footer>
+
+    <!--
+    {% include 'navbar.html' %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert -{{ message.tags }}">
+      {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+-->
   
   </body>
 </html>

@@ -3,12 +3,11 @@ from django.http import HttpResponse
 from .models import Equipment
 from .forms import CreateItemForm, ItemForm
 from django.shortcuts import get_object_or_404
-from django.contrib.auth.forms import UserCreationForm #maryam
-from django.contrib import messages #maryam
+#from django.contrib.auth.forms import UserCreationForm #maryam
+from django.contrib import messages #maryam#
+from .forms import UserRegisterForm
 
 # Create your views here.
-
-
 
 def home(request):
     item = Equipment.objects.all
@@ -62,16 +61,24 @@ def deleteItem(request, id):
 #view created by maryam:
 def register(request):
      if request.method == 'POST':
-          form = UserCreationForm(request.POST)
+          form = UserRegisterForm(request.POST)
           if form.is_valid():
                form.save()
                username = form.cleaned_data.get('username')
                messages.success(request, f'Account created for {username}!')
-               return redirect('home')
+               return redirect('homepage')
           else:
            #    form = UserCreationForm()
                return render(request, "appone/register.html", {'form': form})
      else:
         # This branch handles GET requests by initializing a new, blank form
-        form = UserCreationForm()
-        return render(request, "appone/register.html", {'form': form})
+        form = UserRegisterForm()
+        return render(request, "appone/register.html", {'form': form})                             
+     
+#maryam
+def privacypolicy(request):
+    return render(request, 'appone/privacypolicy.html')
+
+#maryam
+def termsofuse(request):
+    return render(request, 'appone/termsofuse.html')
