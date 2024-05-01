@@ -96,7 +96,7 @@
 
 .students {
     padding: 90px 50px 90px 50px;
-    background-color: rgb(14, 190, 190);
+    background-color: #eceef0;
 }
 
 .tables{
@@ -111,7 +111,7 @@
 }
 
 .button1 {
-    background-color: rgb(75, 164, 164);
+    background-color: #0056b3;
     border-radius: 10px;
     text-align: center;
     transition-duration: 1s;
@@ -120,7 +120,7 @@
 }
 
 .button1:hover{
-    background-color: #2f3ec5;
+    background-color: #1f2b97;
     color: white;
 }
 
@@ -140,7 +140,7 @@
 
 .bottomright{
     height: 300px;
-    background-color: rgb(189, 189, 189);
+    background-color: rgb(133, 131, 131);
     border-radius: 10px;
 }
 
