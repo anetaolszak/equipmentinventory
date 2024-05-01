@@ -1,0 +1,150 @@
+
+  /*Styling for admin dashboard*/
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+.adminmain{
+    display: flex;
+    justify-content: space-between;
+    height: 700px;
+}
+
+.leftsection {
+  background-color: rgb(23, 26, 26);
+}
+
+
+.mainnavs{
+    width: fit-content;
+    font-size: 15px;
+    text-align: center;
+
+}
+
+.mainnavs a{
+    border-radius: 10px;
+    border-color: white;
+    text-decoration: none;
+    padding: 15px 30px 15px 30px;
+    display: block;
+    margin-top: 10px;
+    color: white;
+    transition-duration: 1s;
+    transition-property: all;
+    transition-timing-function: ease-in-out;
+}
+
+.mainnavs a:hover{
+    background-color: #2f3ec5;
+    color: white;
+}
+
+.mainnavs a:active{
+    background-color: #2f3ec5;
+    color: white;
+}
+
+.card-body{
+    flex: 2;
+}
+
+.topcard{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 15px 0px 15px 0px;
+    border-bottom: rgb(161, 161, 161) solid 1px;
+}
+
+.cardmain{
+    margin: 40px;
+    background-color: rgb(211, 211, 212);
+}
+
+#cardmainp{
+    padding: 10px;
+}
+
+.cardmain2{
+    height: fit-content;
+    background-color: rgb(189, 189, 189);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Reservationwaiting{
+    display: flex;
+    justify-content: space-between;
+}
+
+.reservations{
+    padding: 90px 50px 90px 50px;
+}
+
+.students {
+    padding: 90px 50px 90px 50px;
+    background-color: #eceef0;
+}
+
+.tables{
+    height: 200px;
+    margin-top: 20px;
+}
+
+.titles{
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button1 {
+    background-color: #0056b3;
+    border-radius: 10px;
+    text-align: center;
+    transition-duration: 1s;
+    transition-property: all;
+    transition-timing-function: ease-in-out;
+}
+
+.button1:hover{
+    background-color: #1f2b97;
+    color: white;
+}
+
+.button1 a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px 15px 30px;
+}
+
+.cardmainright{
+    padding: 35px;
+}
+
+.rightmainbox p{
+    margin-top: 15px;
+}
+
+.bottomright{
+    height: 300px;
+    background-color: rgb(133, 131, 131);
+    border-radius: 10px;
+}
+
+.bottomright p{
+    padding-left: 10px;
+    padding-top: 10px;
+}

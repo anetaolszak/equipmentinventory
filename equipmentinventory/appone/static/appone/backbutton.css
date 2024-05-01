@@ -1,0 +1,22 @@
+.button1 {
+    margin-left: 80px;
+    background-color: #0056b3;
+    width: fit-content;
+    border-radius: 10px;
+    text-align: center;
+    transition-duration: 1s;
+    transition-property: all;
+    transition-timing-function: ease-in-out;
+    margin-top: 10px;
+}
+
+.button1:hover{
+    background-color: #1f2b97;
+    color: white;
+}
+
+.button1 a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px 15px 30px;
+}
