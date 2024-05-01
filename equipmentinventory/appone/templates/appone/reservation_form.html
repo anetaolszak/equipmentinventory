@@ -1,22 +1,21 @@
-{% extends 'main.html' %}
-<!-- inheritance everything from main.html -->
-{% block content %} {% load static %}
+<!-- rayan -->
+{% extends 'main.html' %} {% load static %}
+{% block content %}
+<div class="container">
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="message">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservation Form</title>
-    <link href="{% static 'appone/styles.css' %}" rel="stylesheet" />
-    <div class="container">
-</head>
-
-<body>
     <h1>Reservation Form</h1>
+    <link href="{% static 'appone/styles.css' %}" rel="stylesheet" />
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Reserve Item</button>
     </form>
-
-</body>
-{% endblock content%}
+</div> 
+{% endblock %}

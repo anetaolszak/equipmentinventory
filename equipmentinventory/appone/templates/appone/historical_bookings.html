@@ -1,8 +1,77 @@
+<!-- rayan -->
 {% extends 'main.html' %}
-{% block content %}
+{% block content %} {% load static %}
+
+<head>
+    <link href="{% static 'appone/styles.css' %}" rel="stylesheet" />
+    <style>
+        .table-container {
+            width: 95%;
+            margin: 0 auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #0f1a94;
+            color: white;
+        }
+        .action-btn {
+            background-color: #1E98D7;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 9px;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<br/>
 <h1>Historical Bookings</h1>
-{% for booking in historical_bookings %}
-    <p>{{ booking.equipment }} - {{ booking.start_date }} to {{ booking.end_date }}</p>
-    <a href="{% url 'rebook_booking' booking.id %}">Re-book</a>
-{% endfor %}
+<div class="table-container">
+<table>
+    <thead>
+        <tr>
+            <th>Equipment</th>
+            <th>Type</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Status</th>
+            <th>Location</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for booking in historical_bookings %}
+        <tr>
+            <td>{{ booking.equipment.name }}</td>
+            <td>{{ booking.equipment.devicetype.type }}</td>
+            <td>{{ booking.start_date }}</td>
+            <td>{{ booking.end_date }}</td>
+            <td>{{ booking.equipment.status.status }}</td>
+            <td>{{ booking.equipment.location.location }}</td>
+            <td><a href="{% url 'rebook_booking' booking.id %}" class="action-btn">Re-book</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="btn-container">
+    <a href="{% url 'current_bookings' %}" class="action-btn">View Current Bookings</a>
+    <a href="{% url 'reserve_item' %}" class="action-btn">Make a New Booking</a>
+</div>
+</div>
+
 {% endblock %}

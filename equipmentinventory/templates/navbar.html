@@ -1,4 +1,5 @@
-<div style="display: flex; justify-content: space-between; align-items: center;">
+<!-- rayan -->
+<div style="display: flex; justify-content: space-between; align-items: center; background-color: white;">
   <div>
     {% load static %}
     <img
@@ -8,10 +9,10 @@
     />
     
   </div>
-  <nav style="background-color: white; padding: 10px;">
+  <nav style="padding: 10px;">
     <a href="http://127.0.0.1:8000/admin/" style="text-decoration: none; color: black; padding: 10px 10px; border: 10px;">Dashboard</a>
     <a href="http://127.0.0.1:8000/admin/" style="text-decoration: none; color: black; padding: 10px 10px; border: 5px;">Equipment</a>
-    <a href="http://127.0.0.1:8000/admin/" style="text-decoration: none; color: black; padding: 10px 10px; border: 5px;">Reservations</a>
+    <a href="{% url 'current_bookings' %}" style="text-decoration: none; color: black; padding: 10px 10px; border: 5px;">Reservations</a>
   </nav>
 </div>
 
