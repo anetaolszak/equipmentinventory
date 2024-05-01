@@ -12,6 +12,8 @@ urlpatterns = [
     path('reports/usage/', views.equipment_usage_history, name='usage_history'),
     path('reports/warranty/', views.warranty_report, name="warranty_report"),
     path('reports/overdue/', views.overdue_equipment_report, name="overdue_equipment"),
+    path('inventory/overduecount/', views.overdue_equipment_count_view, name='overdue_count'),
+    path('inventory/countbydevicetype/', views.inventory_count_by_device_type_view, name='count_by_device_type'),
 
 
 
