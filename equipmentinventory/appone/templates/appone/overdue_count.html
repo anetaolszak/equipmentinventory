@@ -11,6 +11,7 @@
       type="text/css"
       href="{% static 'appone/reports.css' %}"
     />
+    <link href="{% static 'appone/backbutton.css' %}" rel="stylesheet" />
   </head>
 
   <h1>Overdue Equipment Count Report</h1>
@@ -100,3 +101,6 @@
   </tr>
   {% endfor %}
 </table>
+<div class="button1">
+  <a href="http://127.0.0.1:8000/admindashboard/">Back</a>
+</div>
