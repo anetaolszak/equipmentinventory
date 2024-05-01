@@ -1,7 +1,9 @@
 {% extends 'main.html' %}
 <!-- inheritance everything from main.html -->
 {% block content %}
-
+<head>
+  <link rel="stylesheet" href="/static/appone/backbutton.css" />
+</head>
 <div>
   <form method="POST" action="{% url 'appone_deleteitem' item.id %}">
     {% csrf_token %}
@@ -14,5 +16,7 @@
     </small>
   </div>
 </div>
-
+<div class="button1">
+  <a href="http://127.0.0.1:8000/admindashboard/">Back</a>
+</div>
 {% endblock content %}
