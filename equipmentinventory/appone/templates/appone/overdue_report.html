@@ -12,19 +12,46 @@
       href="{% static 'appone/reports.css' %}"
     />
   </head>
-  <body>
-    <h1>Overdue Equipment Report</h1>
-    <table border="1">
-      <tr>
-        <th>Equipment Name</th>
-        <th>Due Date</th>
-      </tr>
-      {% for item in overdue_equipment %}
-      <tr>
-        <td>{{ item.name }}</td>
-        <td>{{ item.due_date }}</td>
-      </tr>
-      {% endfor %}
-    </table>
-  </body>
+<h1>Overdue Equipment Report</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Device Type</th>
+    <th>Serial Number</th>
+    <th>CPU</th>
+    <th>GPU</th>
+    <th>RAM</th>
+    <th>Quantity</th>
+    <th>Audit Date</th>
+    <th>Location</th>
+    <th>Status</th>
+    <th>Due Date</th>
+    <th>Comments</th>
+    <th>Last Updated</th>
+    <!--  headers -->
+  </tr>
+  {% for equipment in overdue_equipment %}
+  <tr>
+    <td>{{ equipment.name }}</td>
+    <td>{{ equipment.devicetype }}</td>
+    <td>{{ equipment.serial_number }}</td>
+    <td>{{ equipment.cpu }}</td>
+    <td>{{ equipment.gpu }}</td>
+    <td>{{ equipment.ram }}</td>
+    <td>{{ equipment.quantity }}</td>
+    <td>{{ equipment.audit_date }}</td>
+    <td>{{ equipment.location }}</td>
+    <td>{{ equipment.status}}</td>
+    <td>{{ equipment.due_date }}</td>
+    <td>{{ equipment.comments }}</td>
+    <td>{{ equipment.updated }}</td>
+    <!--  data -->
+  </tr>
+  {% empty %}
+  <tr>
+    <td colspan="14">No overdue equipment found.</td>
+  </tr>
+  {% endfor %}
+</table>
+</body>
 </html>

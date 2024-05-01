@@ -5,13 +5,14 @@ from django.utils import timezone
 
 
 
-
+#Aneta Olszak
 class DeviceType(models.Model):
     type = models.CharField(max_length=200)
     
     def __str__(self):
         return self.type
 
+#Aneta Olszak
 class DeviceWarranty(models.Model):
     WARRANTY_CHOICES = (
         (24, '24 months warranty provided'),
@@ -25,19 +26,21 @@ class DeviceWarranty(models.Model):
     def __str__(self):
         return f"{self.get_warranty_period_display()} (Expires on: {self.expiration_date})"
 
+#Aneta Olszak
 class Location(models.Model):
     location = models.CharField(max_length=200)
     
     def __str__(self):
         return self.location
 
+#Aneta Olszak
 class Status(models.Model):
     status = models.CharField(max_length=100)
     
     def __str__(self):
         return self.status
 
-
+#Aneta Olszak
 class Equipment(models.Model):
     name = models.CharField(max_length=255)
     devicetype = models.ForeignKey(DeviceType, on_delete=models.SET_NULL, null=True)
@@ -60,6 +63,7 @@ class Equipment(models.Model):
     def __str__(self):
         return self.name
 
+#Aneta Olszak
 class UsageHistory(models.Model):
     equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
