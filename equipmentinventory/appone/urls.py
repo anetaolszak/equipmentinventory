@@ -24,6 +24,12 @@ urlpatterns = [
     path('logout/', log_views.LogoutView.as_view(template_name='appone/logout.html'), name='logout'), #maryam
     path('privacypolicy/', privacypolicy, name = "privacypolicy"), #maryam
     path('termsofuse/', termsofuse, name = "termsofuse"), #maryam
+    path('reports/inventorystatus/', views.inventory_report, name="inventory_status"),
+    path('reports/usage/', views.equipment_usage_history, name='usage_history'),
+    path('reports/warranty/', views.warranty_report, name="warranty_report"),
+    path('reports/overdue/', views.overdue_equipment_report, name="overdue_equipment"),
+    path('inventory/overduecount/', views.overdue_equipment_count_view, name='overdue_count'),
+    path('inventory/countbydevicetype/', views.inventory_count_by_device_type_view, name='count_by_device_type'),
 
 
 

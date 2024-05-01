@@ -67,3 +67,31 @@ class Booking(models.Model): #rayan - booking model
 
     def __str__(self):
         return f"{self.equipment.name} - {self.user.username}"
+class UsageHistory(models.Model):
+    equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    date_used = models.DateTimeField(auto_now_add=True)
+    notes = models.TextField(blank=True)
+
+    def __str__(self):
+        return f'{self.equipment.name} used on {self.date_used} by {self.user.username if self.user else "Unknown"}'
+
+    def is_available(self): #rayan
+        return self.status.status == 'Available'
+
+    def is_booked(self, start_date, end_date): #rayan
+        return self.booking_set.filter(
+            start_date__lte=end_date,
+            end_date__gte=start_date,
+            is_current=True
+        ).exists()    
+
+class Booking(models.Model): #rayan - booking model
+    equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    start_date = models.DateField()
+    end_date = models.DateField()
+    is_current = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f"{self.equipment.name} - {self.user.username}"
