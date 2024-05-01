@@ -3,16 +3,17 @@ from django.http import HttpResponse
 from django.db.models import Q #rayan
 from django.contrib.auth import get_user #rayan
 from .models import Booking #rayan
-from .models import Equipment
-from .forms import CreateItemForm, ItemForm
 from .forms import ReservationForm #rayan - import reservation form
-from django.utils import timezone #rayan
 from django.contrib import messages #rayan
+from .models import Equipment, DeviceWarranty, UsageHistory
+from .forms import CreateItemForm, ItemForm
+from django.utils import timezone
 from django.shortcuts import get_object_or_404
+#from django.contrib.auth.forms import UserCreationForm #maryam
+from django.contrib import messages #maryam#
+from .forms import UserRegisterForm
 
 # Create your views here.
-
-
 
 def home(request):
     item = Equipment.objects.all
@@ -115,4 +116,58 @@ def cancel_booking(request, booking_id): #rayan
         booking.save()
         return redirect('current_bookings')
     else:
-        return HttpResponse("You cannot cancel this booking.")   
+  
+        return HttpResponse("You cannot cancel this booking.")  
+#view created by maryam:
+def register(request):
+     if request.method == 'POST':
+          form = UserRegisterForm(request.POST)
+          if form.is_valid():
+               form.save()
+               username = form.cleaned_data.get('username')
+               messages.success(request, f'Account created for {username}!')
+               return redirect('homepage')
+          else:
+           #    form = UserCreationForm()
+               return render(request, "appone/register.html", {'form': form})
+     else:
+        # This branch handles GET requests by initializing a new, blank form
+        form = UserRegisterForm()
+        return render(request, "appone/register.html", {'form': form})                             
+     
+#maryam
+def privacypolicy(request):
+    return render(request, 'appone/privacypolicy.html')
+
+#maryam
+def termsofuse(request):
+    return render(request, 'appone/termsofuse.html')  
+  
+@login_required
+@user_passes_test(is_admin)
+def overdue_equipment_count_view(request):
+    # Queryset of overdue equipment
+    overdue_equipment = Equipment.objects.filter(due_date__lt=timezone.now().date())
+    overdue_count = overdue_equipment.count()  # Count of overdue equipment
+
+    # Pass the queryset and count to the context
+    context = {
+        'overdue_equipment': overdue_equipment,
+        'overdue_count': overdue_count,
+    }
+
+    return render(request, 'appone/overdue_count.html', context)
+
+
+@login_required
+@user_passes_test(is_admin)
+def inventory_count_by_device_type_view(request):
+    # Count of equipment by device type
+    count_by_device_type = Equipment.objects.values('devicetype__type').annotate(count=Count('id')).order_by('devicetype__type')
+    
+    # Pass the counts to the context
+    context = {
+        'count_by_device_type': count_by_device_type,
+    }
+
+    return render(request, 'appone/count_by_device_type.html', context)
